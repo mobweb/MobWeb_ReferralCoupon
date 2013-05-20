@@ -1,0 +1,6 @@
+app/code/local/MobWeb/ReferalCoupon app/code/local/MobWeb/ReferalCoupon/
+
+app/etc/modules/MobWeb_ReferalCoupon.xml app/etc/modules/MobWeb_ReferalCoupon.xml
+
+# Clear the cache
+@shell   rm -rf $PROJECT/var/cache/* && echo "Magento Cache cleared"

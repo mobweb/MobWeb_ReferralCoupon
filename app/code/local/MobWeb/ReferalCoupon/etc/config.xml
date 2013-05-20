@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <MobWeb_ReferalCoupon>
+            <version>0.1.0</version>
+        </MobWeb_ReferalCoupon>
+    </modules>
+    <global>
+        <models>
+            <referalcoupon>
+                <class>MobWeb_ReferalCoupon_Model</class>
+            </referalcoupon>
+        </models>
+        <helpers>
+            <referalcoupon>
+                <class>MobWeb_ReferalCoupon_Helper</class>
+            </referalcoupon>
+        </helpers>
+        <resources>
+            <referalcoupon_setup>
+                <setup>
+                    <module>MobWeb_ReferalCoupon</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </referalcoupon_setup>
+        </resources>
+        <events>
+            <!-- Debugging observer -->
+            <!--
+            <controller_front_init_before>
+                <observers>
+                    <referalcoupon>
+                        <class>referalcoupon/observer</class>
+                        <method>sendCoupon</method>
+                        <type>singleton</type>
+                    </referalcoupon >
+                </observers>
+            </controller_front_init_before>
+            -->
+            <!-- Observe the following event to place the cookie,
+            since it is executed on every page -->
+            <controller_front_init_before>
+                <observers>
+                    <referalcoupon>
+                        <class>referalcoupon/observer</class>
+                        <method>captureReferral</method>
+                        <type>singleton</type>
+                    </referalcoupon >
+                </observers>
+            </controller_front_init_before>
+            <!-- Observe the user registration to detect if a referrer
+            cookie exists -->
+            <customer_register_success>
+                <observers>
+                    <referalcoupon>
+                        <class>referalcoupon/observer</class>
+                        <method>captureRegistration</method>
+                        <type>singleton</type>
+                    </referalcoupon >
+                </observers>
+            </customer_register_success>
+            <!-- Observe the order placement to detect if a referrer
+            exists -->
+            <sales_order_place_after>
+                <observers>
+                    <referalcoupon>
+                        <class>referalcoupon/observer</class>
+                        <method>captureOrder</method>
+                        <type>singleton</type>
+                    </referalcoupon>
+                </observers>
+            </sales_order_place_after>
+        </events>
+    </global>
+</config>
