@@ -1,6 +1,10 @@
 <?php
 class MobWeb_ReferalCoupon_Model_Observer
 {
+	// This function is run on every page load. It checks if the "ref"
+	// parameter is appended to the URL, and if yes, it places a cookie
+	// in the user's browser so that when he signs up or places an order,
+	// the referal is attributed to the referrer
     public function captureReferral( Varien_Event_Observer $observer )
     {
     	$controller = $observer->getEvent()->getFront();
@@ -15,11 +19,12 @@ class MobWeb_ReferalCoupon_Model_Observer
     	}
     }
 
+    // After creating an account, check if the newly registered customer
+    // was referred by another customer by checking if the "referral"
+    // cookie exists. If yes, store that information as part of the customer
+    // data
     public function captureRegistration( Varien_Event_Observer $observer )
     {
-    	// After creating an account, check if the newly registered customer
-    	// was referred by another customer by checking if the "referral"
-    	// cookie exists
     	if( $referrer_id = Mage::getModel( 'core/cookie' )->get( Mage::helper( 'referalcoupon' )->cookie_name ) ) {
 
     		// Update the newly registered customer's account with the
@@ -32,6 +37,12 @@ class MobWeb_ReferalCoupon_Model_Observer
     	}
     }
 
+    // If an order is placed, check if the customer is registered.
+    // If yes, check if his account is linked to a referrer. If not,
+    // check if he has registered recently and if yes if a referrer cookie
+    // is present. If the user isn't using a registered account at all, also
+    // check if the referrer cookie is present. If either of these are true,
+    // send the referring customer his coupon code
     public function captureOrder( Varien_Event_Observer $observer )
     {
 		$order = $observer->getEvent()->getOrder();
@@ -111,6 +122,7 @@ class MobWeb_ReferalCoupon_Model_Observer
 		}
     }
 
+    // Sends a coupon to the customer specified as $referrer_id
     public function sendCoupon( $referrer_id ) {
 
     	// Load the user object of the referrer
@@ -120,7 +132,8 @@ class MobWeb_ReferalCoupon_Model_Observer
     		$referrer_email = $referrer->getEmail();
 
     		// Create the coupon code
-    		$coupon_code = Mage::helper( 'referalcoupon' )->createCoupons( 1, $referrer_id )[ 0 ];
+    		$coupon_code = Mage::helper( 'referalcoupon' )->createCoupons( 1, $referrer_id );
+    		$coupon_code = $coupon_code[ 0 ];
 
     		// Send the coupon to the referrer
 		    Mage::getModel( 'core/email_template' )->sendTransactional(
@@ -134,13 +147,6 @@ class MobWeb_ReferalCoupon_Model_Observer
 		    	array( 'coupon_code' => $coupon_code ),
 		    	Mage::app()->getStore()->getId()
 		    );
-
-		    // Update the referal's account to indicate that the coupon
-		    // has already been sent to the referrer
-
-
-
-    		Mage::log( 'Sending coupon code: ' . $coupon_code . ' to ' . $referrer_email );
     	}
     }
 }

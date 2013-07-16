@@ -40,8 +40,8 @@
                 </observers>
             </controller_front_init_before>
             -->
-            <!-- Observe the following event to place the cookie,
-            since it is executed on every page -->
+            <!-- Observe the controller_front_init_before event
+            that is executed on every page to place the cookie -->
             <controller_front_init_before>
                 <observers>
                     <referalcoupon>
