@@ -3,8 +3,8 @@
 class MobWeb_ReferalCoupon_Helper_Data extends Mage_Core_Helper_Abstract
 {
 	public $cookie_name = 'mobweb_referalcoupon_cookie';
-	public $shopping_cart_rule_id; // The ID of the shopping cart rule that will be used to create the coupon codes
-	public $transactional_email_id; // The ID of the transactional email template that will be used to send the coupon to the referrer
+	public $shopping_cart_rule_id = 'ENTER YOUR SHOPPING CART RULE ID HERE'; // The ID of the shopping cart rule that will be used to create the coupon codes
+	public $transactional_email_id = 'ENTER YOUR TRANSACTIONAL EMAIL RULE ID HERE'; // The ID of the transactional email template that will be used to send the coupon to the referrer
 	public $log_file = 'mobweb_referalcoupon.log';
 
 	public function createCoupons($count = 1, $string = '')
