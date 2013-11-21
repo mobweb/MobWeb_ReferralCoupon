@@ -63,7 +63,7 @@ class MobWeb_ReferalCoupon_Model_Observer
 			// if the "mobweb_referalcoupon_claimed" attribute is not set
 			// to 1, because if it is, the coupon has already been sent to
 			// the referrer
-			if($referrer_id = $user->getData('mobweb_referalcoupon_referrer') && $user->getData('mobweb_referalcoupon_claimed') !== '1') {
+			if(($referrer_id = $user->getData('mobweb_referalcoupon_referrer')) && $user->getData('mobweb_referalcoupon_claimed') !== '1') {
 				// Send the referrer a discount coupon
 				$this->sendCoupon($referrer_id);
 
