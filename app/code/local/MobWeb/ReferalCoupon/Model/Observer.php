@@ -74,7 +74,7 @@ class MobWeb_ReferalCoupon_Model_Observer
 				$user->save();
 
 				// Create a log entry
-				Mage::helper('referalcoupon')->log(sprintf('Order captured by referred user %s, referred by %s', $user->getId(), $referrer_id));
+				Mage::helper('referalcoupon')->log(sprintf('Order captured by registered referred user %s, referred by %s', $user_id, $referrer_id));
 			} else {
 				// If the user doesn't have that attribute, check if
 				// his account was created in the last 10 minutes, meaning
@@ -109,7 +109,7 @@ class MobWeb_ReferalCoupon_Model_Observer
 							$user->save();
 
 							// Create a log entry
-							Mage::helper('referalcoupon')->log(sprintf('Order captured by referred user %s, referred by %s', $user->getId(), $referrer_id));
+							Mage::helper('referalcoupon')->log(sprintf('Order captured by newly registerd referred user %s, referred by %s', $user->getId(), $referrer_id));
 						}
 					}
 				}
