@@ -25,13 +25,13 @@ $installer->addAttribute(
 
 // Add the custom attribute to the adminhtml_customer form in the backend.
 // Check the table customer_form_attribute to see if the attribute was properly
-// added to the form
+// added to the form (remove the next line for debugging)
 /*
-Mage::getSingleton( 'eav/config' )
-	->getAttribute( 'customer', 'mobweb_referalcoupon_referrer' )
-	->setData( 'used_in_forms', array( 'adminhtml_customer' ) )
+Mage::getSingleton('eav/config')
+	->getAttribute('customer', 'mobweb_referalcoupon_referrer')
+	->setData('used_in_forms', array('adminhtml_customer'))
 	->save();
-*/
+// */
 
 // Create the custom attribute
 $installer->addAttribute(
@@ -49,12 +49,12 @@ $installer->addAttribute(
 
 // Add the custom attribute to the adminhtml_customer form in the backend.
 // Check the table customer_form_attribute to see if the attribute was properly
-// added to the form
+// added to the form (remove the next line for debugging)
 /*
-Mage::getSingleton( 'eav/config' )
-	->getAttribute( 'customer', 'mobweb_referalcoupon_claimed' )
-	->setData( 'used_in_forms', array( 'adminhtml_customer' ) )
+Mage::getSingleton('eav/config')
+	->getAttribute('customer', 'mobweb_referalcoupon_claimed')
+	->setData('used_in_forms', array('adminhtml_customer'))
 	->save();
-*/
+// */
 
 $installer->endSetup();
