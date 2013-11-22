@@ -6,7 +6,7 @@ Send a coupon code to a customer after he refers a new customer to your store an
 
 Install using [colinmollenhour/modman](https://github.com/colinmollenhour/modman/).
 
-Afterwards, create a new «Shopping Cart Price Rule» in your Magento Admin Panel under «Promotions». This Price Rule will then be used to create the coupon codes. Enter the newly created Price Rule's ID in Helper/Data.php ($shopping_cart_rule_id). Next, create a new Transactional Email under System -> Transactional Emails. You may use the «coupon_code» variable to enter the coupon code into the Email. Enter the newly created Transactional Email's ID in Helper/Data.php.
+In your Admin Panel, go to System -> Configuration -> Sales -> Referal Coupon. There you have to select the coupon and the transactional email that should be used to send that coupon.
 
 ## Questions? Need help?
 
