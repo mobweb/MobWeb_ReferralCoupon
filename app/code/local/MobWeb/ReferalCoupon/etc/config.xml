@@ -10,6 +10,9 @@
             <referalcoupon>
                 <class>MobWeb_ReferalCoupon_Model</class>
             </referalcoupon>
+            <referalcoupon_adminhtml>
+              <class>MobWeb_ReferalCoupon_Adminhtml_Model</class>
+            </referalcoupon_adminhtml>
         </models>
         <helpers>
             <referalcoupon>
@@ -32,11 +35,11 @@
             <!--
             <controller_front_init_before>
                 <observers>
-                    <referalcoupon>
+                    <referalcoupon_debugging>
                         <class>referalcoupon/observer</class>
                         <method>sendCoupon</method>
                         <type>singleton</type>
-                    </referalcoupon >
+                    </referalcoupon_debugging>
                 </observers>
             </controller_front_init_before>
             -->
@@ -48,7 +51,7 @@
                         <class>referalcoupon/observer</class>
                         <method>captureReferral</method>
                         <type>singleton</type>
-                    </referalcoupon >
+                    </referalcoupon>
                 </observers>
             </controller_front_init_before>
             <!-- Observe the user registration to detect if a referrer

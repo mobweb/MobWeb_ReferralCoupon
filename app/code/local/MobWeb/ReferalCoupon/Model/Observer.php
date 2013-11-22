@@ -132,17 +132,31 @@ class MobWeb_ReferalCoupon_Model_Observer
 
     // Sends a coupon to the customer specified as $referrer_id
     public function sendCoupon($referrer_id) {
+    	$referrer_id = 2;
     	// Load the user object of the referrer
     	if($referrer = Mage::getModel('customer/customer')->load($referrer_id)) {
+
     		// Get the referrer's email address
     		$referrer_email = $referrer->getEmail();
 
     		// Create the coupon code
     		$coupon_code = Mage::helper('referalcoupon')->createCoupons(1, $referrer_id);
     		if($coupon_code = $coupon_code[0]) {
+    			// Load the transactional email specified in the config
+    			$transactional_email_id = Mage::getStoreConfig('referalcoupon/configuration/transactional_email_id');
+    			$transactional_email = Mage::getModel('core/email_template')->load($transactional_email_id);
+
+    			// Check if the transactional email exists
+    			if($transactional_email->isObjectNew()) {
+    				// Create a log entry
+    				Mage::helper('referalcoupon')->log('Invalid or unknown transactional email ID specified: ' . $transactional_email_id);
+    				return false;
+    			}
+
+
 	    		// Send the coupon to the referrer
 			    Mage::getModel('core/email_template')->sendTransactional(
-			    	Mage::helper('referalcoupon')->transactional_email_id,
+			    	$transactional_email->getId(),
 			    	array(
 			    		'name' => Mage::getStoreConfig('trans_email/ident_support/name'),
 			    	    'email' =>  Mage::getStoreConfig('trans_email/ident_support/email')

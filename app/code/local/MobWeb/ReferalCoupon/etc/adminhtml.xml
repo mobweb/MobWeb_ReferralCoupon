@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!-- When adding a new "section" (see system.xml), by default no one can access it. That's why we need to define access rules here. If the fields are added to existing sections, they can be accessed by anyone who can access this section -->
+<config>
+	<!-- "Access Control Lists" -->
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<referalcoupon translate="title" module="referalcoupon">
+										<title>Referal Coupon</title>
+									</referalcoupon>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>
