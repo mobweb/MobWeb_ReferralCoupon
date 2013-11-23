@@ -7,7 +7,7 @@
     </referralcoupon_index_index>
     <customer_account>
         <reference name="customer_account_navigation">
-            <action method="addLink">
+            <action method="addLink" translate="label" module="referralcoupon">
                 <name>my_referral_link</name>
                 <path>referralcoupon/index/index</path>
                 <label>Referrals</label>

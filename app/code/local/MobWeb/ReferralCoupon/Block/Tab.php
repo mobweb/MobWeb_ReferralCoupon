@@ -32,4 +32,9 @@ class MobWeb_ReferralCoupon_Block_Tab extends Mage_Core_Block_Template
 			return Mage::getBaseUrl() . '?ref=' . $customerId;
 		}
 	}
+
+	public function getInstructions()
+	{
+		return Mage::getStoreConfig('referralcoupon/instruction_text/instruction_text');
+	}
 }

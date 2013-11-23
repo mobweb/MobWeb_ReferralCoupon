@@ -1,15 +1,20 @@
-<?php //TODO: rename "ReferralCoupon" => "ReferralCoupon", assure translations,  Also: Modify the default "Share this Product" email to include the ?ref= param ?>
+<?php //TODO: Modify the default "Share this Product" email to include the ?ref= param ?>
 <div class="dashboard">
     <div class="page-title">
         <h1><?php echo $this->__('Referrals') ?></h1>
     </div>
+    <?php if($instructions = $this->getInstructions()) { ?>
+        <div>
+            <p><?php echo $instructions; ?></p>
+        </div>
+    <?php } ?>
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('My Referral Link') ?></h2>
         <ul class="form-list">
             <li class="fields">
-                <div class="customer-name">
-                    <div class="field name-firstname">
-                        <label for="firstname" class="required"><em>*</em>Vorname</label>
+                <div>
+                    <div class="field link">
+                        <label for="link" class="required"><?php echo $this->__('Link') ?></label>
                         <div class="input-box">
                             <input type="text" class="input-text required-entry" value="<?php echo $this->getReferralLink() ?>" readonly onclick="this.select()" />
                         </div>
@@ -34,7 +39,7 @@
                 </thead>
                 <tbody>
                     <?php foreach($referrals as $referral) { ?>
-                        <?php $status = $referral->getData('mobweb_referralcoupon_claimed') === '1' ? 'Order placed, referral coupon sent' : 'Signed up, no order placed yet' ?>
+                        <?php $status = $referral->getData('mobweb_referralcoupon_claimed') === '1' ? 'First order complete.' : 'Signed up, no order placed yet.' ?>
                             <tr>
                                 <td><?php echo $referral->getData('created_at') ?>&nbsp;</td>
                                 <td><?php echo $referral->getData('email') ?>&nbsp;</td>
@@ -45,7 +50,7 @@
             </table>
             <script type="text/javascript">decorateTable('referred-customers-table')</script>
     	<?php } else { ?>
-    	    <p><?php echo $this->__('You have not refferd any new customers yet.') ?></p>
+    	    <p><?php echo $this->__('You have not referred any customers yet.') ?></p>
     	<?php } ?>
     </div>
 </div>

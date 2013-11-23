@@ -3,6 +3,10 @@ app/design/frontend/base/default/layout/mobweb_referralcoupon.xml app/design/fro
 
 app/design/frontend/base/default/template/mobweb_referralcoupon.phtml app/design/frontend/base/default/template/mobweb_referralcoupon.phtml
 
+app/locale/de_DE/mobweb_referralcoupon.csv app/locale/de_DE/mobweb_referralcoupon.csv
+app/locale/de_DE/mobweb_referralcoupon.csv app/locale/de_CH/mobweb_referralcoupon.csv
+app/locale/de_DE/mobweb_referralcoupon.csv app/locale/de_AT/mobweb_referralcoupon.csv
+
 app/etc/modules/MobWeb_ReferralCoupon.xml app/etc/modules/MobWeb_ReferralCoupon.xml
 
 # Clear the cache

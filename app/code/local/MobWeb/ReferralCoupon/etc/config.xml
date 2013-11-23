@@ -84,6 +84,15 @@
         </events>
     </global>
     <frontend>
+        <translate>
+            <modules>
+                <MobWeb_ReferralCoupon>
+                    <files>
+                        <default>mobweb_referralcoupon.csv</default>
+                    </files>
+                </MobWeb_ReferralCoupon>
+            </modules>
+        </translate>
         <layout>
             <updates>
                 <referralcoupon module="referralcoupon">
