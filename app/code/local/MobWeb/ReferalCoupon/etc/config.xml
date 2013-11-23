@@ -96,7 +96,7 @@
                 <use>standard</use>
                 <args>
                     <module>MobWeb_ReferalCoupon</module>
-                    <frontName>mobweb_referalcoupon</frontName>
+                    <frontName>referalcoupon</frontName>
                 </args>
             </referalcoupon>
         </routers>

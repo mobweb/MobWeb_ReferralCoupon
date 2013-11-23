@@ -9,8 +9,8 @@
         <reference name="customer_account_navigation">
             <action method="addLink">
                 <name>my_referral_link</name>
-                <path>mobweb_referalcoupon/index/index</path>
-                <label>My Referral Link</label>
+                <path>referalcoupon/index/index</path>
+                <label>Referrals</label>
             </action>
         </reference>
     </customer_account>
