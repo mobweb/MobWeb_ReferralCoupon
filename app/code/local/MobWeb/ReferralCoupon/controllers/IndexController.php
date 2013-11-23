@@ -1,5 +1,5 @@
 <?php
-class MobWeb_ReferalCoupon_IndexController extends Mage_Core_Controller_Front_Action
+class MobWeb_ReferralCoupon_IndexController extends Mage_Core_Controller_Front_Action
 {
 	public function preDispatch()
 	{

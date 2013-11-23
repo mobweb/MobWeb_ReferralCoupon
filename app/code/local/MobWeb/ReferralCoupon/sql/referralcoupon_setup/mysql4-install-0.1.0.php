@@ -12,7 +12,7 @@ $installer->startsetup();
 // Create the custom attribute
 $installer->addAttribute(
 	'customer', // Some identifiers are different, e.g. 'catalog_product',
-	'mobweb_referalcoupon_referrer',
+	'mobweb_referralcoupon_referrer',
 	array(
 		'group' => 'Default',
 		'type' => 'varchar',
@@ -28,7 +28,7 @@ $installer->addAttribute(
 // added to the form (remove the next line for debugging)
 /*
 Mage::getSingleton('eav/config')
-	->getAttribute('customer', 'mobweb_referalcoupon_referrer')
+	->getAttribute('customer', 'mobweb_referralcoupon_referrer')
 	->setData('used_in_forms', array('adminhtml_customer'))
 	->save();
 // */
@@ -36,11 +36,11 @@ Mage::getSingleton('eav/config')
 // Create the custom attribute
 $installer->addAttribute(
 	'customer', // Some identifiers are different, e.g. 'catalog_product',
-	'mobweb_referalcoupon_claimed',
+	'mobweb_referralcoupon_claimed',
 	array(
 		'group' => 'Default',
 		'type' => 'varchar',
-		'label' => 'Referal Claimed',
+		'label' => 'Referral Claimed',
 		'input' => 'text',
 		'required' => 0,
 		'default' => '0',
@@ -52,7 +52,7 @@ $installer->addAttribute(
 // added to the form (remove the next line for debugging)
 /*
 Mage::getSingleton('eav/config')
-	->getAttribute('customer', 'mobweb_referalcoupon_claimed')
+	->getAttribute('customer', 'mobweb_referralcoupon_claimed')
 	->setData('used_in_forms', array('adminhtml_customer'))
 	->save();
 // */

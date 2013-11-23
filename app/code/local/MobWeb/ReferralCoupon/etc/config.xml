@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <modules>
-        <MobWeb_ReferalCoupon>
+        <MobWeb_ReferralCoupon>
             <version>0.1.0</version>
-        </MobWeb_ReferalCoupon>
+        </MobWeb_ReferralCoupon>
     </modules>
     <global>
         <blocks>
-            <referalcoupon>
-                <class>MobWeb_ReferalCoupon_Block</class>
-            </referalcoupon>
+            <referralcoupon>
+                <class>MobWeb_ReferralCoupon_Block</class>
+            </referralcoupon>
         </blocks>
         <models>
-            <referalcoupon>
-                <class>MobWeb_ReferalCoupon_Model</class>
-            </referalcoupon>
-            <referalcoupon_adminhtml>
-              <class>MobWeb_ReferalCoupon_Adminhtml_Model</class>
-            </referalcoupon_adminhtml>
+            <referralcoupon>
+                <class>MobWeb_ReferralCoupon_Model</class>
+            </referralcoupon>
+            <referralcoupon_adminhtml>
+              <class>MobWeb_ReferralCoupon_Adminhtml_Model</class>
+            </referralcoupon_adminhtml>
         </models>
         <helpers>
-            <referalcoupon>
-                <class>MobWeb_ReferalCoupon_Helper</class>
-            </referalcoupon>
+            <referralcoupon>
+                <class>MobWeb_ReferralCoupon_Helper</class>
+            </referralcoupon>
         </helpers>
         <resources>
-            <referalcoupon_setup>
+            <referralcoupon_setup>
                 <setup>
-                    <module>MobWeb_ReferalCoupon</module>
+                    <module>MobWeb_ReferralCoupon</module>
                     <class>Mage_Customer_Model_Entity_Setup</class>
                 </setup>
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </referalcoupon_setup>
+            </referralcoupon_setup>
         </resources>
         <events>
             <!-- Debugging observer -->
             <!--
             <controller_front_init_before>
                 <observers>
-                    <referalcoupon_debugging>
-                        <class>referalcoupon/observer</class>
+                    <referralcoupon_debugging>
+                        <class>referralcoupon/observer</class>
                         <method>sendCoupon</method>
                         <type>singleton</type>
-                    </referalcoupon_debugging>
+                    </referralcoupon_debugging>
                 </observers>
             </controller_front_init_before>
             -->
@@ -52,33 +52,33 @@
             that is executed on every page to place the cookie -->
             <controller_front_init_before>
                 <observers>
-                    <referalcoupon>
-                        <class>referalcoupon/observer</class>
+                    <referralcoupon>
+                        <class>referralcoupon/observer</class>
                         <method>captureReferral</method>
                         <type>singleton</type>
-                    </referalcoupon>
+                    </referralcoupon>
                 </observers>
             </controller_front_init_before>
             <!-- Observe the user registration to detect if a referrer
             cookie exists -->
             <customer_register_success>
                 <observers>
-                    <referalcoupon>
-                        <class>referalcoupon/observer</class>
+                    <referralcoupon>
+                        <class>referralcoupon/observer</class>
                         <method>captureRegistration</method>
                         <type>singleton</type>
-                    </referalcoupon >
+                    </referralcoupon >
                 </observers>
             </customer_register_success>
             <!-- Observe the order placement to detect if a referrer
             exists -->
             <sales_order_place_after>
                 <observers>
-                    <referalcoupon>
-                        <class>referalcoupon/observer</class>
+                    <referralcoupon>
+                        <class>referralcoupon/observer</class>
                         <method>captureOrder</method>
                         <type>singleton</type>
-                    </referalcoupon>
+                    </referralcoupon>
                 </observers>
             </sales_order_place_after>
         </events>
@@ -86,19 +86,19 @@
     <frontend>
         <layout>
             <updates>
-                <referalcoupon module="referalcoupon">
-                    <file>mobweb_referalcoupon.xml</file>
-                </referalcoupon>
+                <referralcoupon module="referralcoupon">
+                    <file>mobweb_referralcoupon.xml</file>
+                </referralcoupon>
             </updates>
         </layout>
         <routers>
-            <referalcoupon>
+            <referralcoupon>
                 <use>standard</use>
                 <args>
-                    <module>MobWeb_ReferalCoupon</module>
-                    <frontName>referalcoupon</frontName>
+                    <module>MobWeb_ReferralCoupon</module>
+                    <frontName>referralcoupon</frontName>
                 </args>
-            </referalcoupon>
+            </referralcoupon>
         </routers>
     </frontend>
 </config>

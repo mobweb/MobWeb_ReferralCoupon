@@ -10,9 +10,9 @@
 						<children>
 							<config>
 								<children>
-									<referalcoupon translate="title" module="referalcoupon">
-										<title>Referal Coupon</title>
-									</referalcoupon>
+									<referralcoupon translate="title" module="referralcoupon">
+										<title>Referral Coupon</title>
+									</referralcoupon>
 								</children>
 							</config>
 						</children>

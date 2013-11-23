@@ -1,9 +1,9 @@
-app/code/local/MobWeb/ReferalCoupon app/code/local/MobWeb/ReferalCoupon/
-app/design/frontend/base/default/layout/mobweb_referalcoupon.xml app/design/frontend/base/default/layout/mobweb_referalcoupon.xml
+app/code/local/MobWeb/ReferralCoupon app/code/local/MobWeb/ReferralCoupon/
+app/design/frontend/base/default/layout/mobweb_referralcoupon.xml app/design/frontend/base/default/layout/mobweb_referralcoupon.xml
 
-app/design/frontend/base/default/template/mobweb_referalcoupon.phtml app/design/frontend/base/default/template/mobweb_referalcoupon.phtml
+app/design/frontend/base/default/template/mobweb_referralcoupon.phtml app/design/frontend/base/default/template/mobweb_referralcoupon.phtml
 
-app/etc/modules/MobWeb_ReferalCoupon.xml app/etc/modules/MobWeb_ReferalCoupon.xml
+app/etc/modules/MobWeb_ReferralCoupon.xml app/etc/modules/MobWeb_ReferralCoupon.xml
 
 # Clear the cache
 @shell   rm -rf $PROJECT/var/cache/* && echo "Magento Cache cleared"

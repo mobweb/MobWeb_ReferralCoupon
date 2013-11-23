@@ -1,12 +1,12 @@
-# MobWeb_ReferalCoupon extension for Magento
+# MobWeb_ReferralCoupon extension for Magento
 
-Send a coupon code to a customer after he refers a new customer to your store and this referred user places an order. Works with anonymous checkout as well if the user creates an account before or during checkout. Each referal will get the referrer only one coupon code, altough an abusive user could easily bypass this limitation by just checking out without creating an account.
+Send a coupon code to a customer after he refers a new customer to your store and this referred user places an order. Works with anonymous checkout as well if the user creates an account before or during checkout. Each referral will get the referrer only one coupon code, altough an abusive user could easily bypass this limitation by just checking out without creating an account.
 
 ## Installation
 
 Install using [colinmollenhour/modman](https://github.com/colinmollenhour/modman/).
 
-In your Admin Panel, go to System -> Configuration -> Sales -> Referal Coupon. There you have to select the coupon and the transactional email that should be used to send that coupon.
+In your Admin Panel, go to System -> Configuration -> Sales -> Referral Coupon. There you have to select the coupon and the transactional email that should be used to send that coupon.
 
 ## Questions? Need help?
 

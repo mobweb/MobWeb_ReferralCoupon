@@ -1,4 +1,4 @@
-<?php //TODO: rename "ReferalCoupon" => "ReferralCoupon", assure translations,  Also: Modify the default "Share this Product" email to include the ?ref= param ?>
+<?php //TODO: rename "ReferralCoupon" => "ReferralCoupon", assure translations,  Also: Modify the default "Share this Product" email to include the ?ref= param ?>
 <div class="dashboard">
     <div class="page-title">
         <h1><?php echo $this->__('Referrals') ?></h1>
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                     <?php foreach($referrals as $referral) { ?>
-                        <?php $status = $referral->getData('mobweb_referalcoupon_claimed') === '1' ? 'Order placed, referral coupon sent' : 'Signed up, no order placed yet' ?>
+                        <?php $status = $referral->getData('mobweb_referralcoupon_claimed') === '1' ? 'Order placed, referral coupon sent' : 'Signed up, no order placed yet' ?>
                             <tr>
                                 <td><?php echo $referral->getData('created_at') ?>&nbsp;</td>
                                 <td><?php echo $referral->getData('email') ?>&nbsp;</td>

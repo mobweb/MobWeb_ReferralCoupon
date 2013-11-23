@@ -1,5 +1,5 @@
 <?php
-class MobWeb_ReferalCoupon_Adminhtml_Model_System_Config_Source_Salesrules
+class MobWeb_ReferralCoupon_Adminhtml_Model_System_Config_Source_Salesrules
 {
     /**
      * Options getter

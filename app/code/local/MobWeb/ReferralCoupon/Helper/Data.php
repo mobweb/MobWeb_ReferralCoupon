@@ -1,21 +1,21 @@
 <?php
 
-class MobWeb_ReferalCoupon_Helper_Data extends Mage_Core_Helper_Abstract
+class MobWeb_ReferralCoupon_Helper_Data extends Mage_Core_Helper_Abstract
 {
-	public $cookie_name = 'mobweb_referalcoupon_cookie';
-	public $log_file = 'mobweb_referalcoupon.log';
+	public $cookie_name = 'mobweb_referralcoupon_cookie';
+	public $log_file = 'mobweb_referralcoupon.log';
 
 	public function createCoupons($count = 1, $string = '')
 	{
 		// Get the shopping cart price rule from the ID specified
 		// in the configuration
-		$shopping_cart_price_rule_id = Mage::getStoreConfig('referalcoupon/configuration/shopping_cart_price_rule_id');
+		$shopping_cart_price_rule_id = Mage::getStoreConfig('referralcoupon/configuration/shopping_cart_price_rule_id');
 		$rule = Mage::getModel('salesrule/rule')->load($shopping_cart_price_rule_id);
 
 		// Check if an existing rule was retreived, if not, abort
 		if($rule->isObjectNew()) {
 			// Create a log entry
-			Mage::helper('referalcoupon')->log('Invalid or unknown shopping cart price rule ID specified: ' . $shopping_cart_price_rule_id);
+			Mage::helper('referralcoupon')->log('Invalid or unknown shopping cart price rule ID specified: ' . $shopping_cart_price_rule_id);
 			return false;
 		}
 		

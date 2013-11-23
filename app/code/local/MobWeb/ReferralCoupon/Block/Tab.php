@@ -1,5 +1,5 @@
 <?php
-class MobWeb_ReferalCoupon_Block_Tab extends Mage_Core_Block_Template
+class MobWeb_ReferralCoupon_Block_Tab extends Mage_Core_Block_Template
 {
 	public function getReferrals()
 	{
@@ -7,16 +7,16 @@ class MobWeb_ReferalCoupon_Block_Tab extends Mage_Core_Block_Template
 		$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
 
 		if(!$customerId || !Mage::getSingleton('customer/session')->isLoggedIn()) {
-			Mage::helper('referalcoupon')->log('Unable to retreive customer referrals, either the customer isnt logged in or another error occured');
+			Mage::helper('referralcoupon')->log('Unable to retreive customer referrals, either the customer isnt logged in or another error occured');
 			return;
 		}
 
 		// Get all the customers reffered by the current customer
 		$referrals = Mage::getModel('customer/customer')
 						->getCollection()
-		              	->addAttributeToSelect('mobweb_referalcoupon_referrer')
-		              	->addAttributeToSelect('mobweb_referalcoupon_claimed')
-		              	->addAttributeToFilter('mobweb_referalcoupon_referrer', $customerId)
+		              	->addAttributeToSelect('mobweb_referralcoupon_referrer')
+		              	->addAttributeToSelect('mobweb_referralcoupon_claimed')
+		              	->addAttributeToFilter('mobweb_referralcoupon_referrer', $customerId)
 		              	->addAttributeToSort('created_at', 'DESC')
 		              	->load();
 

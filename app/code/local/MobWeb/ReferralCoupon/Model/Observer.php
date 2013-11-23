@@ -1,24 +1,24 @@
 <?php
-class MobWeb_ReferalCoupon_Model_Observer
+class MobWeb_ReferralCoupon_Model_Observer
 {
 	// This function is run on every page load. It checks if the "ref"
 	// parameter is appended to the URL, and if yes, it places a cookie
 	// in the user's browser so that when he signs up or places an order,
-	// the referal is attributed to the referrer
+	// the referral is attributed to the referrer
     public function captureReferral(Varien_Event_Observer $observer)
     {
     	$controller = $observer->getEvent()->getFront();
     	if($referrer = $controller->getRequest()->getParam('ref', false)) {
     		// If a referrer has been detected, save it in a cookie
     		Mage::getSingleton('core/cookie')->set(
-				Mage::helper('referalcoupon')->cookie_name,
+				Mage::helper('referralcoupon')->cookie_name,
 				$referrer,
 				60*60*24*365*10, // 10 years
 				'/'
 			);
 
 			// Create a log entry
-			Mage::helper('referalcoupon')->log('Referal parameter captured: ' . $referrer);
+			Mage::helper('referralcoupon')->log('Referral parameter captured: ' . $referrer);
     	}
     }
 
@@ -28,17 +28,17 @@ class MobWeb_ReferalCoupon_Model_Observer
     // data
     public function captureRegistration(Varien_Event_Observer $observer)
     {
-    	if($referrer_id = Mage::getModel('core/cookie')->get(Mage::helper('referalcoupon')->cookie_name)) {
+    	if($referrer_id = Mage::getModel('core/cookie')->get(Mage::helper('referralcoupon')->cookie_name)) {
     		// Update the newly registered customer's account with the
     		// customer ID of its referrer
     		$customer = $observer->getCustomer();
-    		$customer->setData('mobweb_referalcoupon_referrer', $referrer_id);
+    		$customer->setData('mobweb_referralcoupon_referrer', $referrer_id);
 
     		// And remove the cookie
-			Mage::getModel('core/cookie')->delete(Mage::helper('referalcoupon')->cookie_name);
+			Mage::getModel('core/cookie')->delete(Mage::helper('referralcoupon')->cookie_name);
 
 			// Create a log entry
-			Mage::helper('referalcoupon')->log('Referal registration captured, referred by: ' . $referrer_id);
+			Mage::helper('referralcoupon')->log('Referral registration captured, referred by: ' . $referrer_id);
     	}
     }
 
@@ -58,23 +58,23 @@ class MobWeb_ReferalCoupon_Model_Observer
 			// Get a reference to the user
 			$user = Mage::getModel('customer/customer')->load($user_id);
 
-			// Check if the user has a "mobweb_referalcoupon_referrer"
+			// Check if the user has a "mobweb_referralcoupon_referrer"
 			// attribute, which contains the user ID of the referrer, AND
-			// if the "mobweb_referalcoupon_claimed" attribute is not set
+			// if the "mobweb_referralcoupon_claimed" attribute is not set
 			// to 1, because if it is, the coupon has already been sent to
 			// the referrer
-			if(($referrer_id = $user->getData('mobweb_referalcoupon_referrer')) && $user->getData('mobweb_referalcoupon_claimed') !== '1') {
+			if(($referrer_id = $user->getData('mobweb_referralcoupon_referrer')) && $user->getData('mobweb_referralcoupon_claimed') !== '1') {
 				// Send the referrer a discount coupon
 				$this->sendCoupon($referrer_id);
 
-				// And update the "mobweb_referalcoupon_claimed" attribute to
+				// And update the "mobweb_referralcoupon_claimed" attribute to
 				// indicate that the the referrer has already recieved a coupon
-				// for this referal
-				$user->setData('mobweb_referalcoupon_claimed', '1');
+				// for this referral
+				$user->setData('mobweb_referralcoupon_claimed', '1');
 				$user->save();
 
 				// Create a log entry
-				Mage::helper('referalcoupon')->log(sprintf('Order captured by registered referred user %s, referred by %s', $user_id, $referrer_id));
+				Mage::helper('referralcoupon')->log(sprintf('Order captured by registered referred user %s, referred by %s', $user_id, $referrer_id));
 			} else {
 				// If the user doesn't have that attribute, check if
 				// his account was created in the last 10 minutes, meaning
@@ -94,38 +94,38 @@ class MobWeb_ReferalCoupon_Model_Observer
 					// the registration was during checkout
 					if(($current-$created_at) < 60*10) {
 						// Check if the "referrer" cookie exists
-						if($referrer_id = Mage::getModel('core/cookie')->get(Mage::helper('referalcoupon')->cookie_name)) {
+						if($referrer_id = Mage::getModel('core/cookie')->get(Mage::helper('referralcoupon')->cookie_name)) {
 
 							// Send the referrer a discount coupon
 							$this->sendCoupon($referrer_id);
 
 							// Destroy the "refferer" cookie
-							Mage::getModel('core/cookie')->delete(Mage::helper('referalcoupon')->cookie_name);
+							Mage::getModel('core/cookie')->delete(Mage::helper('referralcoupon')->cookie_name);
 
 							// And update both the "referrer" and
-							// "coupon_claimed" attributes on the referal
-							$user->setData('mobweb_referalcoupon_referrer', $referrer_id);
-							$user->setData('mobweb_referalcoupon_claimed', '1');
+							// "coupon_claimed" attributes on the referral
+							$user->setData('mobweb_referralcoupon_referrer', $referrer_id);
+							$user->setData('mobweb_referralcoupon_claimed', '1');
 							$user->save();
 
 							// Create a log entry
-							Mage::helper('referalcoupon')->log(sprintf('Order captured by newly registerd referred user %s, referred by %s', $user->getId(), $referrer_id));
+							Mage::helper('referralcoupon')->log(sprintf('Order captured by newly registerd referred user %s, referred by %s', $user->getId(), $referrer_id));
 						}
 					}
 				}
 			}
 		} else {
 			// Check if the "referrer" cookie exists
-			if($referrer_id = Mage::getModel('core/cookie')->get(Mage::helper('referalcoupon')->cookie_name)) {
+			if($referrer_id = Mage::getModel('core/cookie')->get(Mage::helper('referralcoupon')->cookie_name)) {
 
 				// Send the referrer a discount coupon
 				$this->sendCoupon($referrer_id);
 
 				// Destroy the "refferer" cookie
-				Mage::getModel('core/cookie')->delete(Mage::helper('referalcoupon')->cookie_name);
+				Mage::getModel('core/cookie')->delete(Mage::helper('referralcoupon')->cookie_name);
 
 				// Create a log entry
-				Mage::helper('referalcoupon')->log(sprintf('Order captured by guest user with referral cookie, referred by %s', $referrer_id));
+				Mage::helper('referralcoupon')->log(sprintf('Order captured by guest user with referral cookie, referred by %s', $referrer_id));
 			}
 		}
     }
@@ -140,16 +140,16 @@ class MobWeb_ReferalCoupon_Model_Observer
     		$referrer_email = $referrer->getEmail();
 
     		// Create the coupon code
-    		$coupon_code = Mage::helper('referalcoupon')->createCoupons(1, $referrer_id);
+    		$coupon_code = Mage::helper('referralcoupon')->createCoupons(1, $referrer_id);
     		if($coupon_code = $coupon_code[0]) {
     			// Load the transactional email specified in the config
-    			$transactional_email_id = Mage::getStoreConfig('referalcoupon/configuration/transactional_email_id');
+    			$transactional_email_id = Mage::getStoreConfig('referralcoupon/configuration/transactional_email_id');
     			$transactional_email = Mage::getModel('core/email_template')->load($transactional_email_id);
 
     			// Check if the transactional email exists
     			if($transactional_email->isObjectNew()) {
     				// Create a log entry
-    				Mage::helper('referalcoupon')->log('Invalid or unknown transactional email ID specified: ' . $transactional_email_id);
+    				Mage::helper('referralcoupon')->log('Invalid or unknown transactional email ID specified: ' . $transactional_email_id);
     				return false;
     			}
 
@@ -168,7 +168,7 @@ class MobWeb_ReferalCoupon_Model_Observer
 			  );
 
 			    // Create a log entry
-			    Mage::helper('referalcoupon')->log('Sending coupon code to user: ' . $referrer_id);
+			    Mage::helper('referralcoupon')->log('Sending coupon code to user: ' . $referrer_id);
 			}
     	}
     }
