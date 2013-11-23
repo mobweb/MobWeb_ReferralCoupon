@@ -1,0 +1,17 @@
+<layout>
+    <referalcoupon_index_index>
+        <update handle="customer_account" />
+        <reference name="my.account.wrapper">
+            <block type="referalcoupon/tab" name="mobweb_referalcoupon_content" template="mobweb_referalcoupon.phtml"/>            
+        </reference>
+    </referalcoupon_index_index>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink">
+                <name>my_referral_link</name>
+                <path>mobweb_referalcoupon/index/index</path>
+                <label>My Referral Link</label>
+            </action>
+        </reference>
+    </customer_account>
+</layout>

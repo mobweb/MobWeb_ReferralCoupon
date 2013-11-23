@@ -6,6 +6,11 @@
         </MobWeb_ReferalCoupon>
     </modules>
     <global>
+        <blocks>
+            <referalcoupon>
+                <class>MobWeb_ReferalCoupon_Block</class>
+            </referalcoupon>
+        </blocks>
         <models>
             <referalcoupon>
                 <class>MobWeb_ReferalCoupon_Model</class>
@@ -78,4 +83,22 @@
             </sales_order_place_after>
         </events>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <referalcoupon module="referalcoupon">
+                    <file>mobweb_referalcoupon.xml</file>
+                </referalcoupon>
+            </updates>
+        </layout>
+        <routers>
+            <referalcoupon>
+                <use>standard</use>
+                <args>
+                    <module>MobWeb_ReferalCoupon</module>
+                    <frontName>mobweb_referalcoupon</frontName>
+                </args>
+            </referalcoupon>
+        </routers>
+    </frontend>
 </config>

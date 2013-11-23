@@ -1,4 +1,7 @@
 app/code/local/MobWeb/ReferalCoupon app/code/local/MobWeb/ReferalCoupon/
+app/design/frontend/base/default/layout/mobweb_referalcoupon.xml app/design/frontend/base/default/layout/mobweb_referalcoupon.xml
+
+app/design/frontend/base/default/template/mobweb_referalcoupon.phtml app/design/frontend/base/default/template/mobweb_referalcoupon.phtml
 
 app/etc/modules/MobWeb_ReferalCoupon.xml app/etc/modules/MobWeb_ReferalCoupon.xml
 
