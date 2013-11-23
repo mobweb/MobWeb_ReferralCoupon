@@ -10,6 +10,13 @@
             <referralcoupon>
                 <class>MobWeb_ReferralCoupon_Block</class>
             </referralcoupon>
+            <sharingtool>
+                <!-- Rewrite the AddThis_SharingTool_Block_Share block
+                to use our custom product URL -->
+                <rewrite>
+                    <share>MobWeb_ReferralCoupon_Block_Share</share>
+                </rewrite>
+            </sharingtool>
         </blocks>
         <models>
             <referralcoupon>
