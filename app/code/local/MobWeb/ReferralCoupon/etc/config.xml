@@ -18,6 +18,13 @@
             <referralcoupon_adminhtml>
               <class>MobWeb_ReferralCoupon_Adminhtml_Model</class>
             </referralcoupon_adminhtml>
+            <sendfriend>
+                <!-- Rewrite the Mage_Sendfriend_Model_Sendfriend model
+                to use our custom send() function that includes the ?ref param -->
+                <rewrite>
+                    <sendfriend>MobWeb_ReferralCoupon_Model_Sendfriend</sendfriend>
+                </rewrite>
+            </sendfriend>
         </models>
         <helpers>
             <referralcoupon>
