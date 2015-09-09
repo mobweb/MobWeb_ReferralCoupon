@@ -58,6 +58,8 @@ Here is an example transactional email:
 
 Finally, in your Admin Panel, go to *System -> Configuration -> Sales -> Referral Coupon* and select the shopping cart price rule and transactionale email that you've just created.
 
+You can also add instructions for your customers to see next to their referral link in their customer account. There you can explain just how the referral system works and what kind of coupon code a successful referral will create for the referring person.
+
 ## Questions? Need help?
 
 Most of my repositories posted here are projects created for customization requests for clients, so they probably aren't very well documented and the code isn't always 100% flexible. If you have a question or are confused about how something is supposed to work, feel free to get in touch and I'll try and help: [info@mobweb.ch](mailto:info@mobweb.ch).
