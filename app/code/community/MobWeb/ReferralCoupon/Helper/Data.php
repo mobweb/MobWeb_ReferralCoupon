@@ -2,77 +2,77 @@
 
 class MobWeb_ReferralCoupon_Helper_Data extends Mage_Core_Helper_Abstract
 {
-	public $cookie_name = 'mobweb_referralcoupon_cookie';
-	public $log_file = 'mobweb_referralcoupon.log';
+    public $cookie_name = 'mobweb_referralcoupon_cookie';
+    public $log_file = 'mobweb_referralcoupon.log';
 
-	public function createCoupons($count = 1, $string = '')
-	{
-		// Get the shopping cart price rule from the ID specified
-		// in the configuration
-		$shopping_cart_price_rule_id = Mage::getStoreConfig('referralcoupon/configuration/shopping_cart_price_rule_id');
-		$rule = Mage::getModel('salesrule/rule')->load($shopping_cart_price_rule_id);
+    public function createCoupons($count = 1, $string = '')
+    {
+        // Get the shopping cart price rule from the ID specified
+        // in the configuration
+        $shopping_cart_price_rule_id = Mage::getStoreConfig('referralcoupon/configuration/shopping_cart_price_rule_id');
+        $rule = Mage::getModel('salesrule/rule')->load($shopping_cart_price_rule_id);
 
-		// Check if an existing rule was retreived, if not, abort
-		if($rule->isObjectNew()) {
-			// Create a log entry
-			Mage::helper('referralcoupon')->log('Invalid or unknown shopping cart price rule ID specified: ' . $shopping_cart_price_rule_id);
-			return false;
-		}
-		
-		// Define a coupon code generator model instance
-		// Look at Mage_SalesRule_Model_Coupon_Massgenerator for options
-		$generator = Mage::getModel('salesrule/coupon_massgenerator');
+        // Check if an existing rule was retreived, if not, abort
+        if($rule->isObjectNew()) {
+            // Create a log entry
+            Mage::helper('referralcoupon')->log('Invalid or unknown shopping cart price rule ID specified: ' . $shopping_cart_price_rule_id);
+            return false;
+        }
+        
+        // Define a coupon code generator model instance
+        // Look at Mage_SalesRule_Model_Coupon_Massgenerator for options
+        $generator = Mage::getModel('salesrule/coupon_massgenerator');
 
-		$parameters = array(
-		    'count' => $count,
-		    'format' => 'alphanumeric',
-		    'dash_every_x_characters' => 4,
-		    'prefix' => $string . '-',
-		    'suffix' => '',
-		    'length' => 4
-		);
+        $parameters = array(
+            'count' => $count,
+            'format' => 'alphanumeric',
+            'dash_every_x_characters' => 4,
+            'prefix' => $string . '-',
+            'suffix' => '',
+            'length' => 4
+        );
 
-		if(!empty($parameters['format'])){
-		  switch(strtolower($parameters['format'])){
-		    case 'alphanumeric':
-		    case 'alphanum':
-		      $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHANUMERIC);
-		      break;
-		    case 'alphabetical':
-		    case 'alpha':
-		      $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHABETICAL);
-		      break;
-		    case 'numeric':
-		    case 'num':
-		      $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_NUMERIC);
-		      break;
-		  }
-		}
+        if(!empty($parameters['format'])){
+          switch(strtolower($parameters['format'])){
+            case 'alphanumeric':
+            case 'alphanum':
+              $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHANUMERIC);
+              break;
+            case 'alphabetical':
+            case 'alpha':
+              $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHABETICAL);
+              break;
+            case 'numeric':
+            case 'num':
+              $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_NUMERIC);
+              break;
+          }
+        }
 
-		$generator->setDash(!empty($parameters['dash_every_x_characters'])? (int) $parameters['dash_every_x_characters'] : 0);
-		$generator->setLength(!empty($parameters['length']) ? (int) $parameters['length'] : 6);
-		$generator->setPrefix(!empty($parameters['prefix']) ? $parameters['prefix'] : '');
-		$generator->setSuffix(!empty($parameters['suffix']) ? $parameters['suffix'] : '');
+        $generator->setDash(!empty($parameters['dash_every_x_characters'])? (int) $parameters['dash_every_x_characters'] : 0);
+        $generator->setLength(!empty($parameters['length']) ? (int) $parameters['length'] : 6);
+        $generator->setPrefix(!empty($parameters['prefix']) ? $parameters['prefix'] : '');
+        $generator->setSuffix(!empty($parameters['suffix']) ? $parameters['suffix'] : '');
 
-		// Set the generator, and coupon type so it's able to generate
-		$rule->setCouponCodeGenerator($generator);
-		$rule->setCouponType(Mage_SalesRule_Model_Rule::COUPON_TYPE_AUTO);
+        // Set the generator, and coupon type so it's able to generate
+        $rule->setCouponCodeGenerator($generator);
+        $rule->setCouponType(Mage_SalesRule_Model_Rule::COUPON_TYPE_AUTO);
 
-		// Get as many coupons as you required
-		$count = !empty($parameters['count']) ? (int) $parameters['count'] : 1;
-		$codes = array();
+        // Get as many coupons as you required
+        $count = !empty($parameters['count']) ? (int) $parameters['count'] : 1;
+        $codes = array();
 
-		for($i = 0; $i < $count; $i++) {
-			$coupon = $rule->acquireCoupon()->setType(Mage_SalesRule_Helper_Coupon::COUPON_TYPE_SPECIFIC_AUTOGENERATED)->save();
-			$code = $coupon->getCode();
-			$codes[] = $code;
-		}
+        for($i = 0; $i < $count; $i++) {
+            $coupon = $rule->acquireCoupon()->setType(Mage_SalesRule_Helper_Coupon::COUPON_TYPE_SPECIFIC_AUTOGENERATED)->save();
+            $code = $coupon->getCode();
+            $codes[] = $code;
+        }
 
-		return $codes;
-	}
+        return $codes;
+    }
 
-	public function log($msg)
-	{
-		Mage::log($msg, NULL, $this->log_file);
-	}
+    public function log($msg)
+    {
+        Mage::log($msg, NULL, $this->log_file);
+    }
 }
