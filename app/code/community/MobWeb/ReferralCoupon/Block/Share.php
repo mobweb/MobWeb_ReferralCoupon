@@ -8,10 +8,10 @@ class MobWeb_ReferralCoupon_Block_Share extends AddThis_SharingTool_Block_Share
         }
  
         // Otherwise, check if the user is logged in and if they are, return
-        // the current product URL with the "ref" param
+        // the current product URL with the referral param
         $url = Mage::registry('current_product')->getUrlInStore();
         if(($customerId = Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::getSingleton('customer/session')->isLoggedIn()) {
-            $url .= strpos($url, '?') ? '&ref=' : '?ref=';
+            $url .= strpos($url, '?') ? '&' . Mage::helper('referralcoupon')->referral_parameter . '=' : '?' . Mage::helper('referralcoupon')->referral_parameter . '=';
             $url .= $customerId;
              
             return $url;

@@ -29,7 +29,7 @@ class MobWeb_ReferralCoupon_Block_Tab extends Mage_Core_Block_Template
         $customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
 
         if($customerId && Mage::getSingleton('customer/session')->isLoggedIn()) {
-            return Mage::getBaseUrl() . '?ref=' . $customerId;
+            return Mage::getBaseUrl() . '?' . Mage::helper('referralcoupon')->referral_parameter . '=' . $customerId;
         }
     }
 

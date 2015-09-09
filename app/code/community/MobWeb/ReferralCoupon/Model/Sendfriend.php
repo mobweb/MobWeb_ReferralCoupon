@@ -2,7 +2,7 @@
 /*
  *
  * Extending the default Sendfriend model to modify the product URL used
- * in the recommendation email and include the "ref" parameter
+ * in the recommendation email and include the referral parameter
  *
  */
 class MobWeb_ReferralCoupon_Model_Sendfriend extends Mage_Sendfriend_Model_Sendfriend
@@ -31,10 +31,10 @@ class MobWeb_ReferralCoupon_Model_Sendfriend extends Mage_Sendfriend_Model_Sendf
             'store' => Mage::app()->getStore()->getId()
         ));
 
-        // Append the "ref" parameter to the product URL
+        // Append the referral parameter to the product URL
         $url = $this->getProduct()->getUrlInStore();
         if(($customerId = Mage::getSingleton('customer/session')->getCustomer()->getId()) && Mage::getSingleton('customer/session')->isLoggedIn()) {
-            $url .= strpos($url, '?') ? '&ref=' : '?ref=';
+            $url .= strpos($url, '?') ? '&' . Mage::helper('referralcoupon')->referral_parameter . '=' : '?' . Mage::helper('referralcoupon')->referral_parameter . '=';
             $url .= $customerId;
         }
 

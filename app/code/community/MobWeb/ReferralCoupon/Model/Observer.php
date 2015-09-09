@@ -1,14 +1,14 @@
 <?php
 class MobWeb_ReferralCoupon_Model_Observer
 {
-    // This function is run on every page load. It checks if the "ref"
+    // This function is run on every page load. It checks if the referral
     // parameter is appended to the URL, and if yes, it places a cookie
     // in the user's browser so that when he signs up or places an order,
     // the referral is attributed to the referring person
     public function captureReferral(Varien_Event_Observer $observer)
     {
         $controller = $observer->getEvent()->getFront();
-        if($referrer = $controller->getRequest()->getParam('ref', false)) {
+        if($referrer = $controller->getRequest()->getParam(Mage::helper('referralcoupon')->referral_parameter, false)) {
             // If a referrer has been detected, save it in a cookie
             Mage::getSingleton('core/cookie')->set(
                 Mage::helper('referralcoupon')->cookie_name,

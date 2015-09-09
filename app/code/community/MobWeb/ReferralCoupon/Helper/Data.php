@@ -2,6 +2,7 @@
 
 class MobWeb_ReferralCoupon_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    public $referral_parameter = 'rcr';
     public $cookie_name = 'mobweb_referralcoupon_cookie';
     public $log_file = 'mobweb_referralcoupon.log';
 
