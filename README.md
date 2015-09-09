@@ -2,6 +2,8 @@
 
 Send a coupon code to a customer after he refers a new customer to your store and this referred user places their first order. Works with anonymous checkout as well if the new user creates an account before or during checkout.
 
+A new tab is added to the customer's account navigation where they can find their referral URL as well as a list of all the customers that they've referred.
+
 ## Installation
 
 Install using [colinmollenhour/modman](https://github.com/colinmollenhour/modman/).
