@@ -132,7 +132,6 @@ class MobWeb_ReferralCoupon_Model_Observer
 
     // Sends a coupon to the customer specified as $referrer_id
     public function sendCoupon($referrer_id) {
-        $referrer_id = 2;
         // Load the user object of the referrer
         if($referrer = Mage::getModel('customer/customer')->load($referrer_id)) {
 
