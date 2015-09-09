@@ -3,7 +3,7 @@
     <modules>
         <MobWeb_ReferralCoupon>
             <active>true</active>
-            <codePool>local</codePool>
+            <codePool>community</codePool>
         </MobWeb_ReferralCoupon>
     </modules>
 </config>

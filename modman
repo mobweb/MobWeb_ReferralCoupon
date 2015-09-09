@@ -1,4 +1,4 @@
-app/code/local/MobWeb/ReferralCoupon app/code/local/MobWeb/ReferralCoupon/
+app/code/community/MobWeb/ReferralCoupon app/code/community/MobWeb/ReferralCoupon/
 app/design/frontend/base/default/layout/mobweb_referralcoupon.xml app/design/frontend/base/default/layout/mobweb_referralcoupon.xml
 
 app/design/frontend/base/default/template/mobweb_referralcoupon.phtml app/design/frontend/base/default/template/mobweb_referralcoupon.phtml
