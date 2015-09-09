@@ -33,6 +33,7 @@ class MobWeb_ReferralCoupon_Model_Observer
             // customer ID of the referring person
             $customer = $observer->getCustomer();
             $customer->setData('mobweb_referralcoupon_referrer', $referrer_id);
+            $customer->save();
 
             // And remove the cookie
             Mage::getModel('core/cookie')->delete(Mage::helper('referralcoupon')->cookie_name);
