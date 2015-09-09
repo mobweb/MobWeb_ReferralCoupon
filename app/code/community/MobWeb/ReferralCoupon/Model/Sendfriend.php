@@ -54,7 +54,7 @@ class MobWeb_ReferralCoupon_Model_Sendfriend extends Mage_Sendfriend_Model_Sendf
                     'sender_name'   => $sender['name'],
                     'sender_email'  => $sender['email'],
                     'product_image' => Mage::helper('catalog/image')->init($this->getProduct(),
-                        'small_image')->resize(75),
+                    'small_image')->resize(75),
                 )
             );
         }
