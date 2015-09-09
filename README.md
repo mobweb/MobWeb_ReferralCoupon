@@ -1,6 +1,6 @@
 # MobWeb_ReferralCoupon extension for Magento
 
-Send a coupon code to a customer after he refers a new customer to your store and this referred user places an order. Works with anonymous checkout as well if the user creates an account before or during checkout. Each referral will get the referrer only one coupon code, altough an abusive user could easily bypass this limitation by just checking out without creating an account.
+Send a coupon code to a customer after he refers a new customer to your store and this referred user places their first order. Works with anonymous checkout as well if the user creates an account before or during checkout.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Install using [colinmollenhour/modman](https://github.com/colinmollenhour/modman
 
 ## Configuration
 
-First, you have to create a shopping cart price rule that will be used to create a coupon code that will be sent to the referral.
+First, you have to create a shopping cart price rule that will be used to create a coupon code that will be sent to the referral. You may create this shopping cart price rule like any other shopping cart price rule. However, make sure to check the "Use Auto Generation" checkbox. Also, we recommend setting "Uses per Coupon" to "1", unless you want your referrees to be able to use the same coupon code more than once.
 
 Next, you have to create a new transactional email that will be used to sent that coupon code. You can use the **{{var coupon_code}}** variable to include the coupon code in the email.
 
