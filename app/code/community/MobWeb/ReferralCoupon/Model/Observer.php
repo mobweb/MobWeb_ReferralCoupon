@@ -153,7 +153,6 @@ class MobWeb_ReferralCoupon_Model_Observer
                     return false;
                 }
 
-
                 // Send the coupon to the referrer
                 Mage::getModel('core/email_template')->sendTransactional(
                     $transactional_email->getId(),
@@ -165,7 +164,7 @@ class MobWeb_ReferralCoupon_Model_Observer
                     $referrer_email,
                     array('coupon_code' => $coupon_code),
                     Mage::app()->getStore()->getId()
-              );
+                );
 
                 // Create a log entry
                 Mage::helper('referralcoupon')->log('Sending coupon code to user: ' . $referrer_id);
