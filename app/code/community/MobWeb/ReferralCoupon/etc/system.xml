@@ -9,7 +9,7 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                <instruction_text translate="label" module="referralcoupon">
+                <instruction_text translate="label comment" module="referralcoupon">
                     <label>Instruction Text</label>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
@@ -23,6 +23,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <comment>This text will be shown to the customer in their account, next to their referral link. You may include instructions on how the referral system works.</comment>
                         </instruction_text>
                     </fields>
                 </instruction_text>
@@ -43,6 +44,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <comment>Create and select the shopping cart price rule that will be used to create a coupon for the referree after a successfull referral.</comment>
                         </shopping_cart_price_rule_id>
                         <transactional_email_id>
                             <label>Transactional Email</label>
@@ -53,6 +55,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <comment>Create and select the email template that will be sent to the referree after a successfull referral.</comment>
                         </transactional_email_id>
                     </fields>
                 </configuration>

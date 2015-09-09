@@ -8,6 +8,9 @@
 
 "Referral Coupon","Weiterempfehlungen"
 "Instruction Text","Anweisungen"
+"This text will be shown to the customer in their account, next to their referral link. You may include instructions on how the referral system works.","Dieser Text wird dem Kunden in seinem Kundenkonto angezeigt, neben dem Weiterempfehlungs-Link. Der Text sollte den Kunden über das Weiterempfehlungsprogramm informieren."
 "Configuration","Konfiguration"
 "Shopping Cart Price Rule","Warenkorb Preisregel"
-"Transaktional Email","Transaktionale Email"
+"Create and select the shopping cart price rule that will be used to create a coupon for the referree after a successfull referral.","Erstellen und wählen Sie die Warenkorb Preisregel die verwendet werden soll um den Rabattcode für den Empfehler nach einer erfolgreichen Weiterempfehlung zu erstellen."
+"Transactional Email","Transaktionale Email"
+"Create and select the email template that will be sent to the referree after a successfull referral.","Erstellen und wählen Sie die Email-Vorlage welche verwendet werden soll um dem Empfehler seinen Rabattcode zu senden nach einer erfolgreichen Empfehlung."
