@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
     <sections>
-        <referralcoupon module="referralcoupon">
+        <referralcoupon translate="label" module="referralcoupon">
             <tab>sales</tab>
             <label>Referral Coupon</label>
             <sort_order>9003</sort_order>
@@ -9,7 +9,7 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                <instruction_text module="referralcoupon">
+                <instruction_text translate="label" module="referralcoupon">
                     <label>Instruction Text</label>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
